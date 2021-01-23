@@ -1,14 +1,12 @@
 <template>
-  <ul>
-    <li v-for="note in notes" :key="note.id">
-      {{ note.body }}
-    </li>
-  </ul>
+  <NodeListItem />
 </template>
 
 <script>
 import { computed } from "vue";
 import { useStore } from "vuex";
+import NodeListItem from "./NodeListItem.vue";
+
 export default {
   name: "NoteList",
   setup() {

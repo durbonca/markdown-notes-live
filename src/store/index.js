@@ -2,10 +2,10 @@ import { createStore } from "vuex";
 
 export default createStore({
   state: {
-    notes:[],
+    notes: []
   },
   mutations: {
-    setNotes(state, notes){
+    setNotes(state, notes) {
       state.notes = notes;
     }
   },
