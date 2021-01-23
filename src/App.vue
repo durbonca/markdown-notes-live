@@ -1,5 +1,7 @@
 <template>
-  <div class="dev | container | p-3 my-3 mx-auto | flex">
+  <div
+    class="container | min-h-1/2 p-3 my-3 mx-auto | bg-white rounded-xl shadow-2xl | flex"
+  >
     <!--left side-->
     <section class="dev | w-1/4 p-3 mr-3">
       <!--search notes-->
