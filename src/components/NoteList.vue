@@ -1,14 +1,15 @@
 <template>
-  <NodeListItem />
+  <NodeListItem v-for="note in notes" :key="note.id" :note="note" />
 </template>
 
 <script>
 import { computed } from "vue";
 import { useStore } from "vuex";
-import NodeListItem from "./NodeListItem.vue";
+import NodeListItem from "@/components/NodeListItem.vue";
 
 export default {
   name: "NoteList",
+  components: { NodeListItem },
   setup() {
     const store = useStore();
     //const notes = computed(() => store.state.notes);
