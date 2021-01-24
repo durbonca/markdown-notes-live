@@ -3,14 +3,14 @@
     class="container | min-h-1/2 p-3 my-3 mx-auto | bg-white rounded-xl shadow-2xl | flex"
   >
     <!--left side-->
-    <section class="dev | w-1/4 p-3 mr-3">
+    <section class="w-1/4 p-3 mr-3 | bg-gray-100">
       <!--search notes-->
       <p>search notes</p>
       <!-- note list -->
       <NoteList />
     </section>
     <!-- right side -->
-    <section class="dev | p-3 | flex-grow">
+    <section class="p-3 | flex-grow">
       <ActiveNote />
     </section>
   </div>
