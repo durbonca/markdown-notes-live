@@ -20,7 +20,9 @@
     </div>
     <!-- notes info and actions -->
     <section class="mt-3 | flex justify-end">
-      <a href="#">Close notes</a>
+      <a href="" @click="closeNote" class="bg-gray-200 py-1 px-3 rounded-md"
+        >Close Note</a
+      >
     </section>
   </div>
   <div v-else class="h-full | flex justify-center items-center ">
@@ -45,9 +47,11 @@ export default {
         id: activeNote.value.id,
         body: $event.target.value
       });
+    const closeNote = () => store.commit("setActiveNote");
     return {
       activeNote,
-      updateNote
+      updateNote,
+      closeNote
     };
   }
 };
