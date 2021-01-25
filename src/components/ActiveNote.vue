@@ -1,5 +1,5 @@
 <template>
-  <div class="h-full | flex items-stretch">
+  <div v-if="activeNote" class="h-full | flex items-stretch">
     <section class="flex-1 |">
       <textarea
         v-if="activeNote"
@@ -15,6 +15,9 @@
     <article class="bg-gray-900 text-white | p-3 | flex-1">
       HTML will be here
     </article>
+  </div>
+  <div v-else class="h-full | flex justify-center items-center ">
+    please select a note to start editing ✍
   </div>
 </template>
 
