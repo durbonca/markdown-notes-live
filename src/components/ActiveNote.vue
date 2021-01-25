@@ -1,20 +1,27 @@
 <template>
-  <div v-if="activeNote" class="h-full | flex items-stretch">
-    <section class="flex-1 |">
-      <textarea
-        v-if="activeNote"
-        :value="activeNote.body"
-        @input="updateNote"
-        class="w-full h-full | bg-gray-200 | p-3"
-        name=""
-        id=""
-        cols="30"
-        rows="10"
-      ></textarea>
+  <div v-if="activeNote" class="h-full | flex  flex-col ">
+    <!-- edition actions -->
+    <div class="flex-1 flex">
+      <section class="flex-1 | flex ">
+        <textarea
+          v-if="activeNote"
+          :value="activeNote.body"
+          @input="updateNote"
+          class="w-full h-full | bg-gray-200 | p-3"
+          name=""
+          id=""
+          cols="30"
+          rows="10"
+        ></textarea>
+      </section>
+      <article class="bg-gray-900 text-white | p-3 | flex-1">
+        HTML will be here
+      </article>
+    </div>
+    <!-- notes info and actions -->
+    <section class="mt-3 | flex justify-end">
+      <a href="#">Close notes</a>
     </section>
-    <article class="bg-gray-900 text-white | p-3 | flex-1">
-      HTML will be here
-    </article>
   </div>
   <div v-else class="h-full | flex justify-center items-center ">
     please select a note to start editing ✍
