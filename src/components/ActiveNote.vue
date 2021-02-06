@@ -1,5 +1,5 @@
 <template>
-  <div v-if="activeNote" class="h-full | flex  flex-col ">
+  <div v-if="activeNote" class="h-full | flex  flex-col">
     <!-- edition actions -->
     <div class="flex-1 flex">
       <section class="flex-1">

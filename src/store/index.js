@@ -3,7 +3,8 @@ import { createStore } from "vuex";
 export default createStore({
   state: {
     notes: [],
-    activeNote: null
+    activeNote: null,
+    deleting: false
   },
   getters: {
     getNoteById: state => noteId => state.notes.find(note => note.id === noteId)
@@ -25,6 +26,9 @@ export default createStore({
       const index = state.notes.findIndex(note => note.id === state.activeNote);
       state.notes.splice(index, 1);
       state.activeNote = null;
+    },
+    setDeleting(state, deleting) {
+      state.deleting = deleting;
     }
   },
   actions: {
