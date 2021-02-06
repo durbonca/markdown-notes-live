@@ -5,6 +5,7 @@
       <section class="flex-1">
         <ActiveNoteMD
           v-model:body="activeNote.body"
+          @blur-note="blurNote"
           class="w-full h-full | bg-gray-200 | p-3"
         />
       </section>
@@ -61,12 +62,14 @@ export default {
     const closeNote = () => store.commit("setActiveNote");
     const deleteNote = () => store.commit("deleteNote");
     const createNote = () => store.dispatch("createNote");
+    const blurNote = value => !value.length && deleteNote();
     return {
       activeNote,
       updateNote,
       closeNote,
       createNote,
-      deleteNote
+      deleteNote,
+      blurNote
     };
   }
 };
