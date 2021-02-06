@@ -1,5 +1,5 @@
 <template>
-  <DeleteNote />
+  <DeleteNote v-if="$store.state.deleting" />
   <div
     class="container | min-h-1/2 p-3 my-3 mx-auto | bg-white rounded-xl shadow-2xl | flex"
   >

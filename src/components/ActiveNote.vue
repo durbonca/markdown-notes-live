@@ -60,7 +60,8 @@ export default {
         body: $event.target.value
       });
     const closeNote = () => store.commit("setActiveNote");
-    const deleteNote = () => store.commit("deleteNote");
+    /* const deleteNote = () => store.commit("deleteNote"); */
+    const deleteNote = () => store.commit("setDeleting", true);
     const createNote = () => store.dispatch("createNote");
     const blurNote = value => !value.length && deleteNote();
     return {
