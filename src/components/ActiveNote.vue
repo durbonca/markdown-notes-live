@@ -15,7 +15,13 @@
     </div>
     <!-- notes info and actions -->
     <section class="mt-3 | flex justify-end">
-      <a href="#" @click="closeNote" class="bg-gray-200 py-1 px-3 rounded-md"
+      <a
+        href="#"
+        @click="deleteNote"
+        class="py-1 px-3 mr-3 | text-red-500 rounded-md"
+        >Delete Note</a
+      >
+      <a href="#" @click="closeNote" class="py-1 px-3 | bg-gray-200 rounded-md"
         >Close Note</a
       >
     </section>
@@ -53,12 +59,14 @@ export default {
         body: $event.target.value
       });
     const closeNote = () => store.commit("setActiveNote");
+    const deleteNote = () => store.commit("deleteNote");
     const createNote = () => store.dispatch("createNote");
     return {
       activeNote,
       updateNote,
       closeNote,
-      createNote
+      createNote,
+      deleteNote
     };
   }
 };
