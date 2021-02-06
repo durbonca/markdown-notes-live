@@ -20,6 +20,11 @@ export default createStore({
     },
     updateNote(state, { id, body }) {
       state.notes.find(note => note.id === id).body = body;
+    },
+    deleteNote(state) {
+      const index = state.notes.findIndex(note => note.id === state.activeNote);
+      state.notes.splice(index, 1);
+      state.activeNote = null;
     }
   },
   actions: {
