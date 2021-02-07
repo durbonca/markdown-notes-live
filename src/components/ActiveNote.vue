@@ -15,16 +15,24 @@
       />
     </div>
     <!-- notes info and actions -->
-    <section class="mt-3 | flex justify-end">
-      <a
-        href="#"
-        @click="deleteNote"
-        class="py-1 px-3 mr-3 | text-red-500 rounded-md"
-        >Delete Note</a
-      >
-      <a href="#" @click="closeNote" class="py-1 px-3 | bg-gray-200 rounded-md"
-        >Close Note</a
-      >
+    <section class="mt-3 | flex justify-between items-center">
+      <div class="text-sm">
+        Created on {{ noteDate }}. Contains {{ noteLength }} words
+      </div>
+      <div>
+        <a
+          href="#"
+          @click="deleteNote"
+          class="py-1 px-3 mr-3 | text-red-500 rounded-md"
+          >Delete Note</a
+        >
+        <a
+          href="#"
+          @click="closeNote"
+          class="py-1 px-3 | bg-gray-200 rounded-md"
+          >Close Note</a
+        >
+      </div>
     </section>
   </div>
   <div v-else class="h-full | flex justify-center items-center ">
@@ -60,7 +68,6 @@ export default {
         body: $event.target.value
       });
     const closeNote = () => store.commit("setActiveNote");
-    /* const deleteNote = () => store.commit("deleteNote"); */
     const deleteNote = () => store.commit("setDeleting", true);
     const createNote = () => store.dispatch("createNote");
     const blurNote = value => !value.length && deleteNote();
@@ -70,7 +77,9 @@ export default {
       closeNote,
       createNote,
       deleteNote,
-      blurNote
+      blurNote,
+      noteDate: computed(() => new Date(activeNote.value.id).toLocaleString()),
+      noteLength: computed(() => activeNote.value.body.split(/\W+/).length)
     };
   }
 };
