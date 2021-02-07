@@ -17,9 +17,8 @@ export default {
   components: { NodeListItem },
   setup() {
     const store = useStore();
-    //const notes = computed(() => store.state.notes);
     return {
-      notes: computed(() => store.state.notes)
+      notes: computed(() => store.getters.getNoteBySearchTerm)
     };
   }
 };

@@ -6,7 +6,7 @@
     <!--left side-->
     <section class="w-1/4 p-3 mr-3 | bg-gray-100">
       <!--search notes-->
-      <p>search notes</p>
+      <SearchNote />
       <!-- note list -->
       <NoteList />
     </section>
@@ -21,9 +21,10 @@
 import NoteList from "@/components/NoteList.vue";
 import ActiveNote from "@/components/ActiveNote.vue";
 import DeleteNote from "@/components/DeleteNote.vue";
+import SearchNote from "@/components/SearchNote.vue";
 export default {
   name: "App",
-  components: { NoteList, ActiveNote, DeleteNote }
+  components: { NoteList, ActiveNote, DeleteNote, SearchNote }
 };
 </script>
 
