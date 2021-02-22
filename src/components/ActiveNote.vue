@@ -1,23 +1,25 @@
 <template>
   <div v-if="activeNote" class="h-full | flex  flex-col">
     <!-- edition actions -->
-    <div class="flex-1 flex">
+    <div class="flex-1 md:flex">
       <section class="flex-1">
         <ActiveNoteMD
           v-model:body="activeNote.body"
           @blur-note="blurNote"
           @update:body="updateNote"
-          class="w-full h-full | bg-gray-200 | p-3"
+          class="min-h-1/4 w-full h-full | bg-gray-200 | p-3"
         />
       </section>
       <ActiveNoteHTML
-        class="bg-gray-900 text-white | p-3 | flex-1"
+        class="min-h-1/4 bg-gray-900 text-white | p-3 | flex-1"
         :body="activeNote.body"
       />
     </div>
     <!-- notes info and actions -->
-    <section class="mt-3 | flex justify-between items-center">
-      <div class="text-sm">
+    <section
+      class="mr-3 mt-3 | flex flex-col md:flex-row justify-between items-center"
+    >
+      <div class="text-sm mb-3 sm:mb-0">
         Created on {{ noteDate }}. Contains {{ noteLength }} words
       </div>
       <div>
