@@ -8,7 +8,7 @@
 import { computed } from "vue";
 import { useStore } from "vuex";
 export default {
-  name: "NodeListItem",
+  name: "NoteListItem",
   props: {
     note: {
       type: Object,
