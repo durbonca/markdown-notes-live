@@ -63,6 +63,18 @@ export default createStore({
         throw new Error(error.message);
       }
     },
+    async updateNote({ state }, { id, body }) {
+      try {
+        await db
+          .collection("users")
+          .doc(state.user.uid)
+          .collection("notes")
+          .doc(id)
+          .update({ body });
+      } catch (error) {
+        throw new Error(error.message);
+      }
+    },
     async getNotes({ state, commit }) {
       db.collection("users")
         .doc(state.user.uid)
