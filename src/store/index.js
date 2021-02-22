@@ -92,11 +92,12 @@ export default createStore({
       }
     },
     checkAuth({ commit }) {
-      auth.onAuthStateChanged(user => {commit("setUser", user)
-      if(user){
-        dispatch("getNotes");
-      }
-    });
+      auth.onAuthStateChanged(user => {
+        commit("setUser", user);
+        /* if (user) {
+          dispatch("getNotes");
+        } */
+      });
     }
   },
   modules: {}
