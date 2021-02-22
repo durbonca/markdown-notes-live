@@ -1,4 +1,3 @@
-import { doc } from "prettier";
 import { createStore } from "vuex";
 import { auth, firebase, db } from "../firebase";
 
@@ -26,17 +25,11 @@ export default createStore({
     }
   },
   mutations: {
-    createNote(state, note) {
-      state.notes.unshift(note);
-    },
     setNotes(state, notes) {
       state.notes = notes;
     },
     setActiveNote(state, noteId = null) {
       state.activeNote = noteId;
-    },
-    updateNote(state, { id, body }) {
-      state.notes.find(note => note.id === id).body = body;
     },
     deleteNote(state) {
       const index = state.notes.findIndex(note => note.id === state.activeNote);
@@ -55,10 +48,20 @@ export default createStore({
     }
   },
   actions: {
-    createNote({ commit }) {
-      const note = { body: "", id: Date.now() };
-      commit("createNote", note);
-      commit("setActiveNote", note.id);
+    async createNote({ commit, state }) {
+      const ref = db
+        .collection("users")
+        .doc(state.user.uid)
+        .collection("notes");
+      const { id } = ref.doc();
+      const note = { body: "", id, createdAt: Date.now(), uid: state.user.uid };
+
+      try {
+        await ref.doc(id).set(note);
+        commit("setActiveNote", note.id);
+      } catch (error) {
+        throw new Error(error.message);
+      }
     },
     async getNotes({ state, commit }) {
       db.collection("users")
@@ -69,8 +72,8 @@ export default createStore({
 
       function doSnapshot(querySnapshot) {
         let notes = [];
-        querySnapshot.forEach(element => {
-          let { body, uid, createdAt } = element.data();
+        querySnapshot.forEach(doc => {
+          let { body, uid, createdAt } = doc.data();
           notes.push({ body, uid, id: doc.id, createdAt });
         });
         commit("setNotes", notes);
@@ -91,12 +94,12 @@ export default createStore({
         throw new Error(error.message);
       }
     },
-    checkAuth({ commit }) {
+    checkAuth({ commit, dispatch }) {
       auth.onAuthStateChanged(user => {
         commit("setUser", user);
-        /* if (user) {
+        if (user) {
           dispatch("getNotes");
-        } */
+        }
       });
     }
   },
